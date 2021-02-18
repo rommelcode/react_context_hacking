@@ -4,24 +4,26 @@ import './App.css';
 
 const ThemeContext = React.createContext("light")
 
-function ToolBar(){
-  return (<div>
-    <ThemedButton></ThemedButton>
-  </div>);
+function ToolBar() {
+  return (
+    <DisplayValue/>
+  );
 }
 
 function App() {
   return (
     <ThemeContext.Provider value="dark">
-      <ToolBar/>
+      <ToolBar />
     </ThemeContext.Provider>
   );
 }
 
 
-
-function ThemedButton(){
-  return (<button theme={this.context}/>)
+class DisplayValue extends React.Component {
+  render() {
+    console.log(this.context);
+    return (<div>hello?</div>);
+  }
 }
 
 export default App;
