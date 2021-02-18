@@ -19,11 +19,12 @@ function App() {
 }
 
 
-class DisplayValue extends React.Component {
-  render() {
-    console.log(this.context);
-    return (<div>hello?</div>);
-  }
-}
+const DisplayValue = () =>(
+  <ThemeContext.Consumer>
+    {appContext => appContext &&(
+      <div>{appContext}</div>
+    )}
+  </ThemeContext.Consumer>
+)
 
 export default App;
