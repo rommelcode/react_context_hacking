@@ -4,9 +4,10 @@ import './App.css';
 
 
 interface IProps{
-  name:string;
+  name?:string;
+  address:number;
 }
-const ThemeContext = React.createContext<IProps>({name:"blue"})
+const ThemeContext = React.createContext<IProps>({name:"blue",address:112})
 
 function ToolBar() {
   return (
@@ -16,7 +17,7 @@ function ToolBar() {
 
 function App() {
   return (
-    <ThemeContext.Provider value={{name:"brown"}}>
+    <ThemeContext.Provider value={{name:"brown",address:1112}}>
       <ToolBar />
     </ThemeContext.Provider>
   );
@@ -25,7 +26,7 @@ function App() {
 
 const DisplayValue = () =>(
   <ThemeContext.Consumer>
-  {value=><div>{value.name}</div>}
+  {value=><div>{value.name}{value.address}</div>}
   </ThemeContext.Consumer>
 )
 
