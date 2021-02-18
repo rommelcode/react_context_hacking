@@ -2,7 +2,11 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-const ThemeContext = React.createContext("light")
+
+interface IProps{
+  name:string;
+}
+const ThemeContext = React.createContext<IProps>({name:"blue"})
 
 function ToolBar() {
   return (
@@ -12,7 +16,7 @@ function ToolBar() {
 
 function App() {
   return (
-    <ThemeContext.Provider value="dark">
+    <ThemeContext.Provider value={{name:"brown"}}>
       <ToolBar />
     </ThemeContext.Provider>
   );
@@ -21,9 +25,7 @@ function App() {
 
 const DisplayValue = () =>(
   <ThemeContext.Consumer>
-    {appContext => appContext &&(
-      <div>{appContext}</div>
-    )}
+  {value=><div>{value.name}</div>}
   </ThemeContext.Consumer>
 )
 
